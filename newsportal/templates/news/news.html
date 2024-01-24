@@ -1,0 +1,26 @@
+{% block title %}
+News
+{% endblock title %}
+
+
+{% block content %}
+    <h1>Все новости</h1>
+    <h3>{{ time_now|date:'M d Y'}}</h3>
+    <hr>
+    {% if news %}
+        <table>
+            <tr>
+                <td>Название</td>
+            </tr>
+            {% for new in news %}
+            <tr>
+                <td>{{ new.title|truncatechars:10 }}</td>
+                <td>{{ new.content_text| truncatechars:15|safe }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Новостей пока нет!</h2>
+   {% endif %}
+
+{% endblock content %}
